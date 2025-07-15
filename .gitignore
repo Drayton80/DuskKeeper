@@ -1,0 +1,48 @@
+# --- Node & Yarn ---
+node_modules/
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarnrc.yml
+.pnp.*
+.yarnrc
+.yarn-cache/
+.yarn-integrity
+yarn.lock
+
+# --- Environment files ---
+.env
+.env.local
+.env.*.local
+
+# --- Logs & OS files ---
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
+
+# --- Build artifacts ---
+dist/
+build/
+.next/
+out/
+
+# --- IDE/editor configs ---
+.vscode/
+.idea/
+*.sw?
+
+# --- Cache directories ---
+.cache/
+.next/cache/
+.tmp/
+tmp/
+
+# --- Testing & coverage ---
+coverage/
+*.log
+*.test.js.snap
+jest-cache/
+jest.config.js
