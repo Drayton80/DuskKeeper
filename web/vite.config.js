@@ -10,6 +10,11 @@ export default defineConfig(({ command, mode }) => {
     server: {
       port: 2000,
     },
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
     css: {
       postcss: {
         plugins: [
