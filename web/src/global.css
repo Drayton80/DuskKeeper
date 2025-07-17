@@ -4,46 +4,84 @@
 
 @layer base {
   :root {
-    font-family: Inter, sans-serif;
+    /* Text */
+    --text: 320 20% 25%; /* dusk plum */
+    --text-muted: 320 10% 50%;
 
-    --color-background: #fdf8f2;
-    --color-surface: #eae4dd;
-    --color-foreground: #463046;
-    --color-muted: #856c73;
-    --color-border: #e5d3cf;
+    /* Background */
+    --background: 34 80% 97%; /* warm parchment */
+    --background-surface: 34 60% 95%;
+    --background-hover: 34 60% 90%;
 
-    --color-primary: #cf7b3f;
-    --color-secondary: #a67064;
-    --color-tertiary: #ffc18e;
-    --color-accent: #ea6cc8;
+    /* Primary (sunset purple) */
+    --primary: 285 30% 45%;
+    --primary-hover: 285 30% 40%;
+    --primary-active: 285 30% 35%;
+    --primary-disabled: 285 20% 70%;
+    --primary-foreground: 34 80% 97%;
 
-    --color-success: #4e7868;
-    --color-warning: #f0a85c;
-    --color-destructive: #d76c5b;
+    /* Secondary (sunset pink) */
+    --secondary: 330 60% 60%;
+    --secondary-hover: 330 60% 50%;
+    --secondary-foreground: 34 80% 97%;
 
-    --color-highlight: #ffe4d0;
-    --color-focus-ring: #d9a7cc;
-    --color-shadow: rgba(111, 66, 80, 0.1);
+    /* Accent (warm orange) */
+    --accent: 28 85% 60%;
+    --accent-hover: 28 85% 50%;
+    --accent-foreground: 34 80% 97%;
+
+    /* Border */
+    --border: 20 30% 75%;
+    --border-focus: 285 30% 45%;
+
+    /* Status */
+    --destructive: 5 70% 55%;
+    --destructive-hover: 5 70% 45%;
+    --destructive-foreground: 34 80% 97%;
+
+    --success: 150 30% 45%;
+    --success-hover: 150 30% 35%;
+    --success-foreground: 34 80% 97%;
   }
 
   .dark {
-    --color-background: #0d0802;
-    --color-surface: #2b1e27;
-    --color-foreground: #cfb9cf;
-    --color-border: #3f2c36;
-    --color-muted: #b69aa8;
+    /* Text */
+    --text: 320 30% 85%;
+    --text-muted: 320 20% 60%;
 
-    --color-primary: #c06c30;
-    --color-secondary: #9b6559;
-    --color-tertiary: #ffc18e;
-    --color-accent: #931572;
+    /* Background */
+    --background: 285 30% 10%; /* deep purple dusk */
+    --background-surface: 285 25% 14%;
+    --background-hover: 285 25% 18%;
 
-    --color-success: #4e7868;
-    --color-warning: #d89448;
-    --color-destructive: #e0665c;
+    /* Primary */
+    --primary: 285 30% 55%;
+    --primary-hover: 285 30% 65%;
+    --primary-active: 285 30% 75%;
+    --primary-disabled: 285 20% 30%;
+    --primary-foreground: 34 80% 97%;
 
-    --color-highlight: #3e2a2f;
-    --color-focus-ring: #a46499;
-    --color-shadow: rgba(235, 130, 165, 0.15);
+    /* Secondary */
+    --secondary: 330 60% 65%;
+    --secondary-hover: 330 60% 75%;
+    --secondary-foreground: 34 80% 97%;
+
+    /* Accent */
+    --accent: 28 85% 60%;
+    --accent-hover: 28 85% 70%;
+    --accent-foreground: 34 80% 97%;
+
+    /* Border */
+    --border: 285 20% 35%;
+    --border-focus: 285 30% 60%;
+
+    /* Status */
+    --destructive: 5 70% 65%;
+    --destructive-hover: 5 70% 75%;
+    --destructive-foreground: 34 80% 97%;
+
+    --success: 150 30% 55%;
+    --success-hover: 150 30% 65%;
+    --success-foreground: 34 80% 97%;
   }
 }

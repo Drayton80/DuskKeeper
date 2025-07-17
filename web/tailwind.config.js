@@ -4,20 +4,47 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        tertiary: "var(--color-tertiary)",
-        "background-primary": "var(--color-background)",
-        "background-secondary": "var(--color-foreground)",
-        "background-tertiary": "var(--color-surface)",
-        success: "var(--color-success)",
-        warning: "var(--color-warning)",
-        destructive: "var(--color-destructive)",
-        highlight: "var(--color-highlight)",
-        muted: "var(--color-muted)",
-        border: "var(--color-border)",
-        "focus-ring": "var(--color-focus-ring)",
-        shadow: "var(--color-shadow)",
+        text: {
+          DEFAULT: "hsl(var(--text) / <alpha-value>)",
+          muted: "hsl(var(--text-muted) / <alpha-value>)",
+          inverted: "hsl(var(--background) / <alpha-value>)",
+        },
+        background: {
+          DEFAULT: "hsl(var(--background) / <alpha-value>)",
+          surface: "hsl(var(--background-surface) / <alpha-value>)",
+          hover: "hsl(var(--background-hover) / <alpha-value>)",
+        },
+        primary: {
+          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
+          hover: "hsl(var(--primary-hover) / <alpha-value>)",
+          active: "hsl(var(--primary-active) / <alpha-value>)",
+          disabled: "hsl(var(--primary-disabled) / <alpha-value>)",
+          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
+          hover: "hsl(var(--secondary-hover) / <alpha-value>)",
+          foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
+          hover: "hsl(var(--accent-hover) / <alpha-value>)",
+          foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
+        },
+        border: {
+          DEFAULT: "hsl(var(--border) / <alpha-value>)",
+          focus: "hsl(var(--border-focus) / <alpha-value>)",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
+          hover: "hsl(var(--destructive-hover) / <alpha-value>)",
+          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
+        },
+        success: {
+          DEFAULT: "hsl(var(--success) / <alpha-value>)",
+          hover: "hsl(var(--success-hover) / <alpha-value>)",
+          foreground: "hsl(var(--success-foreground) / <alpha-value>)",
+        },
       },
     },
   },
