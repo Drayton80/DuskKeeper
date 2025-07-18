@@ -16,11 +16,6 @@ export default defineConfig(({ command, mode }) => {
         "@": path.resolve(__dirname, "./src"),
       },
     },
-    css: {
-      postcss: {
-        plugins: [require("tailwindcss"), require("autoprefixer")],
-      },
-    },
     build: {
       outDir: "dist",
       minify: isBuild && isProduction ? "terser" : false,

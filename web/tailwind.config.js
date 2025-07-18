@@ -1,52 +1,73 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}", "./components.json"],
   theme: {
     extend: {
       colors: {
-        text: {
-          DEFAULT: "hsl(var(--text) / <alpha-value>)",
-          muted: "hsl(var(--text-muted) / <alpha-value>)",
-          inverted: "hsl(var(--background) / <alpha-value>)",
+        background: "var(--background)",
+        foreground: {
+          DEFAULT: "var(--foreground)",
+          hover: "var(--foreground-hover)",
         },
-        background: {
-          DEFAULT: "hsl(var(--background) / <alpha-value>)",
-          surface: "hsl(var(--background-surface) / <alpha-value>)",
-          hover: "hsl(var(--background-hover) / <alpha-value>)",
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary) / <alpha-value>)",
-          hover: "hsl(var(--primary-hover) / <alpha-value>)",
-          active: "hsl(var(--primary-active) / <alpha-value>)",
-          disabled: "hsl(var(--primary-disabled) / <alpha-value>)",
-          foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
-          hover: "hsl(var(--secondary-hover) / <alpha-value>)",
-          foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent) / <alpha-value>)",
-          hover: "hsl(var(--accent-hover) / <alpha-value>)",
-          foreground: "hsl(var(--accent-foreground) / <alpha-value>)",
-        },
-        border: {
-          DEFAULT: "hsl(var(--border) / <alpha-value>)",
-          focus: "hsl(var(--border-focus) / <alpha-value>)",
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive) / <alpha-value>)",
-          hover: "hsl(var(--destructive-hover) / <alpha-value>)",
-          foreground: "hsl(var(--destructive-foreground) / <alpha-value>)",
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
         },
-        success: {
-          DEFAULT: "hsl(var(--success) / <alpha-value>)",
-          hover: "hsl(var(--success-hover) / <alpha-value>)",
-          foreground: "hsl(var(--success-foreground) / <alpha-value>)",
+        border: "var(--border)",
+        input: {
+          DEFAULT: "var(--input)",
+          hover: "var(--input-hover)",
         },
+        ring: "var(--ring)",
+        chart: {
+          1: "var(--chart-1)",
+          2: "var(--chart-2)",
+          3: "var(--chart-3)",
+          4: "var(--chart-4)",
+          5: "var(--chart-5)",
+        },
+        header: {
+          DEFAULT: "var(--header)",
+          foreground: "var(--header-foreground)",
+          primary: "var(--header-primary)",
+          "primary-foreground": "var(--header-primary-foreground)",
+          accent: "var(--header-accent)",
+          "accent-foreground": "var(--header-accent-foreground)",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
   plugins: [],
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };

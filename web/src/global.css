@@ -2,86 +2,86 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --foreground-hover: oklch(0.708 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --input-hover: oklch(0.708 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --header: oklch(0.985 0 0);
+  --header-foreground: oklch(0.145 0 0);
+  --header-primary: oklch(0.205 0 0);
+  --header-primary-foreground: oklch(0.985 0 0);
+  --header-accent: oklch(0.97 0 0);
+  --header-accent-foreground: oklch(0.205 0 0);
+  --header-border: oklch(0.922 0 0);
+  --header-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --foreground-hover: oklch(0.708 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --input-hover: oklch(0.439 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --header: oklch(0.205 0 0);
+  --header-foreground: oklch(0.985 0 0);
+  --header-primary: oklch(0.488 0.243 264.376);
+  --header-primary-foreground: oklch(0.985 0 0);
+  --header-accent: oklch(0.269 0 0);
+  --header-accent-foreground: oklch(0.985 0 0);
+  --header-border: oklch(0.269 0 0);
+  --header-ring: oklch(0.439 0 0);
+}
+
 @layer base {
-  :root {
-    /* Text */
-    --text: 320 20% 25%; /* dusk plum */
-    --text-muted: 320 10% 50%;
-
-    /* Background */
-    --background: 34 80% 97%; /* warm parchment */
-    --background-surface: 34 60% 95%;
-    --background-hover: 34 60% 90%;
-
-    /* Primary (sunset purple) */
-    --primary: 285 30% 45%;
-    --primary-hover: 285 30% 40%;
-    --primary-active: 285 30% 35%;
-    --primary-disabled: 285 20% 70%;
-    --primary-foreground: 34 80% 97%;
-
-    /* Secondary (sunset pink) */
-    --secondary: 330 60% 60%;
-    --secondary-hover: 330 60% 50%;
-    --secondary-foreground: 34 80% 97%;
-
-    /* Accent (warm orange) */
-    --accent: 28 85% 60%;
-    --accent-hover: 28 85% 50%;
-    --accent-foreground: 34 80% 97%;
-
-    /* Border */
-    --border: 20 30% 75%;
-    --border-focus: 285 30% 45%;
-
-    /* Status */
-    --destructive: 5 70% 55%;
-    --destructive-hover: 5 70% 45%;
-    --destructive-foreground: 34 80% 97%;
-
-    --success: 150 30% 45%;
-    --success-hover: 150 30% 35%;
-    --success-foreground: 34 80% 97%;
+  * {
+    @apply border-border;
   }
-
-  .dark {
-    /* Text */
-    --text: 320 30% 85%;
-    --text-muted: 320 20% 60%;
-
-    /* Background */
-    --background: 285 30% 10%; /* deep purple dusk */
-    --background-surface: 285 25% 14%;
-    --background-hover: 285 25% 18%;
-
-    /* Primary */
-    --primary: 285 30% 55%;
-    --primary-hover: 285 30% 65%;
-    --primary-active: 285 30% 75%;
-    --primary-disabled: 285 20% 30%;
-    --primary-foreground: 34 80% 97%;
-
-    /* Secondary */
-    --secondary: 330 60% 65%;
-    --secondary-hover: 330 60% 75%;
-    --secondary-foreground: 34 80% 97%;
-
-    /* Accent */
-    --accent: 28 85% 60%;
-    --accent-hover: 28 85% 70%;
-    --accent-foreground: 34 80% 97%;
-
-    /* Border */
-    --border: 285 20% 35%;
-    --border-focus: 285 30% 60%;
-
-    /* Status */
-    --destructive: 5 70% 65%;
-    --destructive-hover: 5 70% 75%;
-    --destructive-foreground: 34 80% 97%;
-
-    --success: 150 30% 55%;
-    --success-hover: 150 30% 65%;
-    --success-foreground: 34 80% 97%;
+  body {
+    @apply bg-background text-foreground;
   }
 }
