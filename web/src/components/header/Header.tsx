@@ -1,17 +1,10 @@
-import { BrandLogo } from "./components/brandLogo/BrandLogo";
-import { ProfilePicture } from "./components/profilePicture/ProfilePicture";
-import { SearchBar } from "./components/searchBar/SearchBar";
-import { ThemeSwitch } from "./components/themeSwitch/ThemeSwitch";
+import { MainHeader } from "./components/mainHeader/MainHeader";
 
 export const Header = () => {
   return (
-    <header className="h-16 w-full px-16 bg-header flex justify-between items-center">
-      <BrandLogo />
-      <div className="flex items-center gap-4">
-        <SearchBar />
-        <ThemeSwitch />
-        <ProfilePicture />
-      </div>
+    <header className="flex flex-col">
+      <MainHeader />
+      <div data-slot="header-buttons" className="flex"></div>
     </header>
   );
 };
