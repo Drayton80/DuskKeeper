@@ -10,6 +10,7 @@ node_modules/
 .yarn-cache/
 .yarn-integrity
 yarn.lock
+package-lock.json
 
 # --- Environment files ---
 .env
