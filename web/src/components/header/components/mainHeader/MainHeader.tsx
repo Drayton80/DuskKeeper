@@ -6,8 +6,8 @@ import { ThemeSwitch } from "./components/themeSwitch/ThemeSwitch";
 export const MainHeader = () => {
   return (
     <div
-      data-slot="header-main"
-      className="h-16 w-full px-16 bg-header flex justify-between items-center"
+      data-slot="main-header"
+      className="h-16 w-full max-w-[1516px] px-16 bg-header flex justify-between items-center"
     >
       <BrandLogo />
       <div className="flex items-center gap-4">
