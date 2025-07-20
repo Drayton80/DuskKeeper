@@ -1,6 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}", "./components.json"],
+  variants: {
+    extend: {
+      rotate: ["group-data-state-open"],
+    },
+  },
+  plugins: [
+    require("tailwindcss/plugin")(({ addVariant }) => {
+      addVariant("group-data-[state=open]", '&[data-state="open"]');
+    }),
+  ],
   theme: {
     extend: {
       colors: {
@@ -66,7 +76,6 @@ module.exports = {
       },
     },
   },
-  plugins: [],
   future: {
     hoverOnlyWhenSupported: true,
   },

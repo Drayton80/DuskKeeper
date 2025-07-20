@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from "lucide-react";
 import { MenuButtonProps } from "./MenuButton.d";
-import { Content, Item, Menu, Portal, Trigger } from "@radix-ui/react-menubar";
+import { Root, Content, Portal, Trigger } from "@radix-ui/react-hover-card";
 import { cn } from "@/utils/cn";
 
 export const MenuButton = ({
@@ -12,28 +12,40 @@ export const MenuButton = ({
   const showOptions = !!options?.length;
 
   return (
-    <Menu>
-      <Trigger
-        className={cn([
-          "h-full min-w-28 px-2 py-2 text-[16px] gap-2 font-medium",
-          "text-foreground hover:text-foreground-hover bg-header",
-          "flex justify-start items-center",
-          className,
-        ])}
-        onClick={onClick}
-      >
-        {label}
-        {showOptions && <ChevronDownIcon className="w-[20px] h-[20px]" />}
+    <Root openDelay={300}>
+      <Trigger asChild>
+        <button
+          className={cn([
+            "group",
+            "flex justify-start items-center",
+            "h-full min-w-28 px-2 py-2 text-[16px] gap-2 font-medium",
+            "text-foreground hover:text-foreground-hover bg-header",
+            "cursor-pointer",
+            className,
+          ])}
+          onClick={onClick}
+        >
+          {label}
+          {showOptions && (
+            <ChevronDownIcon
+              className={cn([
+                "w-[20px] h-[20px]",
+                "transform -rotate-90 transition duration-[300ms] ease-in-out",
+                "group-data-[state=open]:rotate-0",
+              ])}
+            />
+          )}
+        </button>
       </Trigger>
       {showOptions && (
         <Portal>
           <Content align="start" sideOffset={0} alignOffset={5}>
             {options?.map(({ key, label, onClick, className }) => (
-              <Item
+              <button
                 className={cn([
+                  "flex items-center",
                   "text-foreground bg-header hover:bg-header-accent font-semibold",
                   "min-h-10 h-full min-w-28 px-2 py-1 text-[13px]",
-                  "flex items-center",
                   "cursor-pointer",
                   className,
                 ])}
@@ -41,11 +53,11 @@ export const MenuButton = ({
                 onClick={onClick}
               >
                 {label}
-              </Item>
+              </button>
             ))}
           </Content>
         </Portal>
       )}
-    </Menu>
+    </Root>
   );
 };

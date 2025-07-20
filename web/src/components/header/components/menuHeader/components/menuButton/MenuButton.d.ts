@@ -5,7 +5,7 @@ interface MenuButtonOption {
   key: string;
   label: string;
   className?: ClassValue;
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export interface MenuButtonProps {
