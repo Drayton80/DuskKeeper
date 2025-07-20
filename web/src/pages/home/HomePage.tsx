@@ -1,12 +1,9 @@
-import { Header } from "@/components/header/Header";
-import { useTheme } from "@/providers/theme/ThemeProvider";
+import { PageWrapper } from "../PageWrapper";
 
 export const HomePage = () => {
-  const { theme } = useTheme();
-
   return (
-    <main className="min-h-screen bg-background">
-      <Header />
-    </main>
+    <PageWrapper>
+      <h1>Home</h1>
+    </PageWrapper>
   );
 };
