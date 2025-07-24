@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "prisma:generate && prisma:pull && ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "tsc --watch && node dist/index.js",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
-    "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "npx prisma generate",
+    "prisma:pull": "npx prisma db pull",
+    "prisma:migrate": "npx prisma migrate dev",
     "meili:reindex": "ts-node src/meilisearch/indexItems.ts"
   },
   "dependencies": {

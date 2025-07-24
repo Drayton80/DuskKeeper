@@ -1,0 +1,101 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
+model Action {
+  id                String          @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name              String          @unique @db.VarChar(255)
+  category_id       String          @db.Uuid
+  link              String?         @db.VarChar(255)
+  description       String
+  summary           String?
+  requirements      String[]
+  createdAt         DateTime?       @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime?       @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  action_traits     action_traits[]
+  action_categories ActionCategory  @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "idx_actions_name")
+  @@map("actions")
+}
+
+model ActionCategory {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name        String    @unique @db.VarChar(255)
+  link        String?   @db.VarChar(255)
+  summary     String?
+  description String
+  createdAt   DateTime? @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime? @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  actions     Action[]
+
+  @@index([name], map: "idx_action_categories_name")
+  @@map("action_categories")
+}
+
+/// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
+model Trait {
+  id               String             @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name             String             @unique @db.VarChar(255)
+  link             String?            @db.VarChar(255)
+  leveling         Boolean?           @default(false)
+  description      String
+  createdAt        DateTime?          @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt        DateTime?          @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  action_traits    action_traits[]
+  condition_traits condition_traits[]
+
+  @@index([name], map: "idx_traits_name")
+  @@map("traits")
+}
+
+/// This model contains an expression index which requires additional setup for migrations. Visit https://pris.ly/d/expression-indexes for more info.
+model Condition {
+  id                String              @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name              String              @unique @db.VarChar(255)
+  link              String?             @db.VarChar(255)
+  description       String
+  createdAt         DateTime?           @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt         DateTime?           @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  condition_effects condition_effects[]
+  condition_traits  condition_traits[]
+
+  @@index([name], map: "idx_conditions_name")
+  @@map("conditions")
+}
+
+model action_traits {
+  action_id  String    @db.Uuid
+  trait_id   String    @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  actions    Action    @relation(fields: [action_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  traits     Trait     @relation(fields: [trait_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([action_id, trait_id])
+}
+
+model condition_effects {
+  id           String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  condition_id String    @db.Uuid
+  name         String    @db.VarChar(255)
+  description  String
+  created_at   DateTime? @default(now()) @db.Timestamptz(6)
+  updated_at   DateTime? @default(now()) @db.Timestamptz(6)
+  conditions   Condition @relation(fields: [condition_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model condition_traits {
+  condition_id String    @db.Uuid
+  trait_id     String    @db.Uuid
+  created_at   DateTime? @default(now()) @db.Timestamptz(6)
+  conditions   Condition @relation(fields: [condition_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  traits       Trait     @relation(fields: [trait_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([condition_id, trait_id])
+}
