@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "prisma:generate && prisma:pull && ts-node-dev --respawn --transpile-only src/index.ts",
+    "dev": "yarn prisma:generate && yarn prisma:pull && ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "tsc",
     "start": "tsc --watch && node dist/index.js",
     "lint": "eslint . --ext .ts",
