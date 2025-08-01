@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
-import { getActions as getActionsService } from "../services";
+import {
+  getActions as getActionsService,
+  createActions as createActionsService,
+} from "../services";
 import { filterDefaultParams } from "./helpers";
+import { Prisma } from "@prisma/client";
 
 export async function getActions(req: Request, res: Response) {
   const {
@@ -28,11 +32,29 @@ export async function getActions(req: Request, res: Response) {
       sort,
     });
 
-    res.json(actions);
+    res.status(200).json(actions);
   } catch (error) {
     console.error("Error fetching actions:", error);
     res.status(500).json({
       error: "Failed to fetch actions",
+      message: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+}
+
+export async function createActions(
+  req: Request<{}, {}, Prisma.ActionCreateInput[]>,
+  res: Response
+) {
+  const actions = req.body;
+
+  try {
+    const result = await createActionsService(actions);
+    res.status(201).json(result);
+  } catch (error) {
+    console.error("Error creating actions:", error);
+    res.status(400).json({
+      error: "Failed to create actions",
       message: error instanceof Error ? error.message : "Unknown error",
     });
   }

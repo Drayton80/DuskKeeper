@@ -1,1 +1,1 @@
-export { getActions } from "./actions.controller";
+export * from "./actions.controller";

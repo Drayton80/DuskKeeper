@@ -1,3 +1,1 @@
-import { getActions } from "./actions.service";
-
-export { getActions };
+export * from "./actions.service";
