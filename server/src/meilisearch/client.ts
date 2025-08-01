@@ -1,8 +1,8 @@
 import { MeiliSearch } from "meilisearch";
 
 const client = new MeiliSearch({
-  host: process.env.MEILI_HOST ?? "",
-  apiKey: process.env.MEILI_API_KEY ?? "",
+  host: process.env.MEILISEARCH_HOST ?? "",
+  apiKey: process.env.MEILISEARCH_KEY ?? "",
 });
 
 export { client as meilisearchClient };
