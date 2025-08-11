@@ -4,7 +4,7 @@ import {
   createActions as createActionsService,
 } from "../services";
 import { filterDefaultParams } from "./helpers";
-import { Prisma } from "@prisma/client";
+import { type ActionCreateInput } from "../database/client.d";
 
 export async function getActions(req: Request, res: Response) {
   const {
@@ -43,7 +43,7 @@ export async function getActions(req: Request, res: Response) {
 }
 
 export async function createActions(
-  req: Request<{}, {}, Prisma.ActionCreateInput[]>,
+  req: Request<{}, {}, ActionCreateInput[]>,
   res: Response
 ) {
   const actions = req.body;

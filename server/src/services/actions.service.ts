@@ -1,5 +1,5 @@
-import { Prisma } from "@prisma/client";
 import { prisma } from "../database/client";
+import { type ActionCreateInput } from '../database/client.d';
 import { ActionDocument, indexActions, searchActions } from "../meilisearch";
 
 interface GetActionsParams {
@@ -30,8 +30,8 @@ export async function getActions({
 
   const skip = (page - 1) * limit;
   const [total, items] = await Promise.all([
-    prisma.action.count(),
-    prisma.action.findMany({
+    prisma.actions.count(),
+    prisma.actions.findMany({
       skip,
       take: limit,
       include: {
@@ -58,7 +58,7 @@ export async function getActions({
 }
 
 export async function getActionById(id: string) {
-  return await prisma.action.findUnique({
+  return await prisma.actions.findUnique({
     where: { id },
     include: {
       actionCategories: true,
@@ -71,9 +71,9 @@ export async function getActionById(id: string) {
   });
 }
 
-export async function createActions(actions: Prisma.ActionCreateInput[]) {
+export async function createActions(actions: ActionCreateInput[]) {
   const categoryIds = [
-    ...new Set(actions.map((a) => a.actionCategories.connect?.id ?? "")),
+    ...new Set(actions.map((a) => a.actionCategories?.connect?.id ?? "")),
   ];
   const existingCategories = await prisma.actionCategories.findMany({
     where: {
@@ -92,7 +92,7 @@ export async function createActions(actions: Prisma.ActionCreateInput[]) {
 
   const createdActions = await Promise.all(
     actions.map((action) =>
-      prisma.action.create({
+      prisma.actions.create({
         data: action,
         include: {
           actionCategories: true,

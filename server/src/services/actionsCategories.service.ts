@@ -1,5 +1,5 @@
 import { prisma } from "../database/client";
-import type { Prisma } from "@prisma/client";
+import { type ActionCategoriesCreateInput } from '../database/client.d';
 
 export async function getActionCategories() {
   return await prisma.actionCategories.findMany();
@@ -14,7 +14,7 @@ export async function getActionCategoryById(id: string) {
 }
 
 export async function createActionCategory(
-  data: Prisma.actionCategoriesCreateInput
+  data: ActionCategoriesCreateInput
 ) {
   return await prisma.actionCategories.create({
     data,

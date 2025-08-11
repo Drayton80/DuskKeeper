@@ -3,7 +3,7 @@ import {
   getActionCategories as getActionCategoriesService,
   createActionCategory as createActionCategoryService,
 } from "../services";
-import { Prisma } from "@prisma/client";
+import { type ActionCategoriesCreateInput } from "../database/client.d";
 
 export async function getActionCategories(req: Request, res: Response) {
   try {
@@ -19,7 +19,7 @@ export async function getActionCategories(req: Request, res: Response) {
 }
 
 export async function createActionCategory(
-  req: Request<{}, {}, Prisma.actionCategoriesCreateInput>,
+  req: Request<{}, {}, ActionCategoriesCreateInput>,
   res: Response
 ) {
   try {
