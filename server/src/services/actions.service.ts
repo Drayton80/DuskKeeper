@@ -1,5 +1,5 @@
 import { prisma } from "../database/client";
-import { type ActionCreateInput } from '../database/client.d';
+import { ActionUpdateInput, type ActionCreateInput } from '../database/client.d';
 import { ActionDocument, indexActions, searchActions } from "../meilisearch";
 
 interface GetActionsParams {
@@ -117,4 +117,35 @@ export async function createActions(actions: ActionCreateInput[]) {
   await indexActions(actionDocuments);
 
   return createdActions;
+}
+
+export async function updateAction(action: ActionUpdateInput) {
+  const { id, ...data } = action;
+
+  const updatedAction = await prisma.actions.update({
+    where: { id },
+    data,
+  });
+
+  return updatedAction;
+}
+
+export async function deleteAction(id: string) {
+  const deletedAction = await prisma.actions.delete({
+    where: { id },
+  });
+
+  return deletedAction;
+}
+
+export async function deleteActions(id: string[]) {
+  const deletedActions = await prisma.actions.deleteMany({
+    where: {
+      id: {
+        in: id,
+      },
+    },
+  });
+
+  return deletedActions;
 }
